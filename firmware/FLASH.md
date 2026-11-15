@@ -5,4 +5,7 @@
 3. Attendi flash; file → `ROBIN_NANO35.CUR`.
 4. Togli SD, USB al Pi, in Mainsail: Firmware Restart.
 
-Build: Aregus fb5-native-display, USART3, FLASH 28KiB, WANT_FSMC_LCD, baud default 250000.
+Build: Aregus fb5-native-display, USART3, FLASH 28KiB, WANT_FSMC_LCD.
+
+- `Robin_nano35.bin` — baud **500000** (default)
+- `Robin_nano35-250k.bin` — baud **250000** (fallback); rename to `Robin_nano35.bin` on the SD before flash

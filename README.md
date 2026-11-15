@@ -8,7 +8,7 @@ License: **GPL-3.0** (same as Klipper / Aregus).
 
 | Path | Contents |
 |------|----------|
-| `firmware/` | Prebuilt `Robin_nano35.bin` (FSMC + USB, 250k), optional `Robin_nano35-500k.bin`, Kconfig snapshot, `FLASH.md` |
+| `firmware/` | Prebuilt `Robin_nano35.bin` (FSMC + USB, **500k**), optional `Robin_nano35-250k.bin`, Kconfig snapshot, `FLASH.md` |
 | `config/fb5-display.cfg` | Display/touch include for `printer.cfg` |
 | `scripts/` | Host setup and USB throughput check |
 
@@ -28,7 +28,7 @@ License: **GPL-3.0** (same as Klipper / Aregus).
 4. Remove the SD. Connect USB between board and Pi.
 5. On the Pi, enable the display include and baud, then start the UI (see below).
 
-Default serial baud: **250000**. Raise to **500000** only after a clean `SERIAL_ERRORS` check (`scripts/throughput-check.sh` and/or `firmware/Robin_nano35-500k.bin`).
+Default serial baud: **500000** (`firmware/Robin_nano35.bin`). If the link is unstable, flash `Robin_nano35-250k.bin` instead and set `baud: 250000` under `[mcu]`.
 
 ## Host setup (Pi)
 
@@ -39,7 +39,7 @@ Default serial baud: **250000**. Raise to **500000** only after a clean `SERIAL_
 # 2) Packages, KlipperScreen, Xvfb helpers
 bash scripts/pi-setup-host.sh
 
-# 3) After MCU flash: include display cfg + baud 250000 and restart Klipper
+# 3) After MCU flash: include display cfg + baud 500000 and restart Klipper
 ~/enable-display-usb.sh   # created by pi-setup-host.sh
 
 # 4) Start KlipperScreen + framebuffer mirror
@@ -59,7 +59,7 @@ Point `[mcu] serial:` at the CH340 `by-id` path and keep `baud:` in sync with th
 ## Policy
 
 - Do **not** update Klipper from Mainsail while using the Aregus `fb5-native-display` host fork — it will overwrite the fork.
-- Prefer 250000 until USB error counters stay clean under load; then consider 500000.
+- Keep `[mcu] baud:` matched to the flashed image (500000 default, or 250000 with the alternate bin).
 - Screen blanking after idle is normal KlipperScreen behavior; disable with `screen_blanking: off` if you want the panel always on.
 
 ## Credits

@@ -68,17 +68,17 @@ for i, line in enumerate(lines):
         continue
     if in_mcu and line.startswith("["):
         if not have_baud:
-            out.append("baud: 250000")
+            out.append("baud: 500000")
         in_mcu = False
     if in_mcu and line.strip().startswith("baud:"):
-        out.append("baud: 250000")
+        out.append("baud: 500000")
         have_baud = True
         continue
     out.append(line)
 if in_mcu and not have_baud:
-    out.append("baud: 250000")
+    out.append("baud: 500000")
 p.write_text("\n".join(out) + "\n")
-print("printer.cfg updated with fb5-display + baud 250000")
+print("printer.cfg updated with fb5-display + baud 500000")
 PY
 sudo systemctl restart klipper
 echo "Restarted klipper. Check Mainsail / screen backlight."
