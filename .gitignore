@@ -1,0 +1,10 @@
+toolchain/
+klipper/
+FB5-klipperscreen-for-native-display/
+katapult/
+*.tar.xz
+out/
+.DS_Store
+*.pyc
+__pycache__/
+notes.md
