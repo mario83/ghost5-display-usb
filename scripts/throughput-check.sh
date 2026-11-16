@@ -11,4 +11,4 @@ sleep 1
 curl -s 'http://127.0.0.1:7125/server/gcode_store?count=15' | python3 -c 'import sys,json
 for m in json.load(sys.stdin)["result"]["gcode_store"][-12:]:
  print(m["message"])'
-echo "Baud target for CH340 spinoff: 500000 (fallback image: Robin_nano35-250k.bin @ 250000)."
+echo "Baud target for CH340 spinoff: 2000000 (fallbacks: 1M / 500k / 250k bins)."

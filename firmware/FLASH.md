@@ -7,5 +7,11 @@
 
 Build: Aregus fb5-native-display, USART3, FLASH 28KiB, WANT_FSMC_LCD.
 
-- `Robin_nano35.bin` — baud **500000** (default)
-- `Robin_nano35-250k.bin` — baud **250000** (fallback); rename to `Robin_nano35.bin` on the SD before flash
+| File | Baud | Note |
+|------|------|------|
+| `Robin_nano35.bin` | **2000000** | default (CH340 max) |
+| `Robin_nano35-1M.bin` | 1000000 | fallback |
+| `Robin_nano35-500k.bin` | 500000 | fallback |
+| `Robin_nano35-250k.bin` | 250000 | fallback |
+
+For any fallback: rename to `Robin_nano35.bin` on the SD before flash, and set matching `baud:` under `[mcu]` on the Pi.
